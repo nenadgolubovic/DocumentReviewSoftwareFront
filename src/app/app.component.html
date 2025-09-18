@@ -2,8 +2,37 @@
   <header>
     <h1>Document Review Software</h1>
   </header>
-  <app-upload-button></app-upload-button>
-  <app-document-view></app-document-view>
-  <app-comment-section></app-comment-section>
-  <app-comment-list></app-comment-list>
+
+  <div class="content">
+    <!-- Leva kolona 20% -->
+    <div class="left-column">
+      <app-upload-button></app-upload-button>
+      <app-document-list></app-document-list>
+    </div>
+
+    <!-- Srednja kolona 60% -->
+    <div class="center-column">
+      <mat-card class="document-view-card">
+        <mat-card-header>
+          <mat-card-title>Selected Document</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="document-placeholder">
+          <div class="pdf-placeholder"></div>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary">
+            <mat-icon>download</mat-icon> Download
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <!-- Desna kolona 20% -->
+    <div class="right-column">
+      <app-comment-section></app-comment-section>
+      <app-comment-list></app-comment-list>
+    </div>
+  </div>
 </div>

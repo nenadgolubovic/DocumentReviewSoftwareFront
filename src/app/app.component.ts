@@ -7,11 +7,12 @@ import { UploadButtonComponent } from "./upload-button/upload-button.component";
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { DocumentListComponent } from './document-list/document-list.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommentListComponent, CommentSectionComponent, DocumentViewComponent, UploadButtonComponent, MatCardModule, MatButtonModule, MatIconModule ],
+  imports: [RouterOutlet, CommentListComponent, CommentSectionComponent, DocumentViewComponent, UploadButtonComponent, MatCardModule, MatButtonModule, MatIconModule,DocumentListComponent ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

@@ -1,21 +1,52 @@
-.comment-card {
-  max-width: 500px;
-  margin: 30px auto;
+.home-page {
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.full-width {
-  width: 100%;
-  margin-bottom: 15px;
+header {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-mat-card-actions {
+.content {
   display: flex;
-  justify-content: flex-end;
+  gap: 20px;
 }
 
-button mat-icon {
-  margin-right: 5px;
+/* Leva kolona */
+.left-column {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Srednja kolona */
+.center-column {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Desna kolona */
+.right-column {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Responsive za manje ekrane */
+@media (max-width: 1200px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .center-column,
+  .right-column {
+    width: 100%;
+  }
 }
