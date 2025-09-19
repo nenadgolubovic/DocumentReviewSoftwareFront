@@ -1,1 +1,17 @@
-<p>add-part-form works!</p>
+<mat-card class="form-card">
+  <mat-card-title>Add Part</mat-card-title>
+  <mat-card-content>
+    <form class="form-container" #form="ngForm">
+      <!-- Engine -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Part</mat-label>
+        <input matInput name="engine" ngModel required />
+      </mat-form-field>
+
+      <!-- Submit -->
+      <button mat-raised-button color="primary" type="submit">
+        Save
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

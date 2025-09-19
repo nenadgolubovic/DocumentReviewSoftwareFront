@@ -8,11 +8,22 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DocumentListComponent } from './document-list/document-list.component';
+import { AddEngineButtonComponent } from './add-engine-button/add-engine-button.component';
+import { AddPartButtonComponent } from "./add-part-button/add-part-button.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommentListComponent, CommentSectionComponent, DocumentViewComponent, UploadButtonComponent, MatCardModule, MatButtonModule, MatIconModule,DocumentListComponent ],
+  imports: [
+    CommentListComponent,
+    CommentSectionComponent,
+    UploadButtonComponent,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    DocumentListComponent,
+    AddEngineButtonComponent, 
+    AddPartButtonComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

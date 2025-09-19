@@ -1,0 +1,18 @@
+.engine-card {
+  width: 320px;          // prilagodi po potrebi
+  margin: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .engine-card-content {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .engine-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: none; // ostavi tačan tekst "add Engine"
+  }
+}

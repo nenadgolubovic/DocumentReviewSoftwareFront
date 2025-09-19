@@ -41,7 +41,11 @@ header {
   flex-direction: column;
   gap: 20px;
 }
-
+.button-row {
+  display: flex;
+  gap: 16px; /* razmak između */
+  align-items: center; /* vertikalno centriranje */
+}
 /* Document placeholder */
 .document-view-card {
   flex: 1; /* zauzima celu visinu srednje kolone */
