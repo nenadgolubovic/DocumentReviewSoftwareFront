@@ -4,14 +4,21 @@
   </mat-card-header>
 
   <mat-card-content>
+    <!-- Polje za title komentara -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Comment Title</mat-label>
+      <input matInput placeholder="Enter a title..." [(ngModel)]="commentTitle">
+    </mat-form-field>
+
+    <!-- Polje za sadržaj komentara -->
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Your Comment</mat-label>
-      <input matInput placeholder="Write something...">
+      <textarea matInput placeholder="Write something..." [(ngModel)]="commentText"></textarea>
     </mat-form-field>
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-raised-button color="primary">
+    <button mat-raised-button color="primary" (click)="submitComment()">
       <mat-icon>send</mat-icon> Submit
     </button>
   </mat-card-actions>

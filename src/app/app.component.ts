@@ -10,6 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { DocumentListComponent } from './document-list/document-list.component';
 import { AddEngineButtonComponent } from './add-engine-button/add-engine-button.component';
 import { AddPartButtonComponent } from "./add-part-button/add-part-button.component";
+import { RegisterComponent } from './register/register.component';
+import { RegisterButtonComponent } from "./register-button/register-button.component";
+import { LogInButtonComponent } from "./log-in-button/log-in-button.component";
 
 @Component({
   selector: 'app-root',
@@ -22,8 +25,12 @@ import { AddPartButtonComponent } from "./add-part-button/add-part-button.compon
     MatButtonModule,
     MatIconModule,
     DocumentListComponent,
-    AddEngineButtonComponent, 
-    AddPartButtonComponent],
+    AddEngineButtonComponent,
+    AddPartButtonComponent,
+    RegisterComponent,
+    RegisterButtonComponent,
+    LogInButtonComponent
+],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

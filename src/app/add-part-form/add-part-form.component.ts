@@ -24,7 +24,6 @@ interface Part {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    HttpClientModule
   ],
   standalone:true,
   templateUrl: './add-part-form.component.html',
@@ -32,7 +31,7 @@ interface Part {
 })
 export class AddPartFormComponent {
 
-  private apiUrl = 'https://localhost:8080/part'; // zameni sa tvojim endpointom
+  private apiUrl = 'https://localhost:8080/part'; 
 
   constructor(private http: HttpClient) {}
 
@@ -50,7 +49,7 @@ export class AddPartFormComponent {
       this.http.post<Part>(this.apiUrl, partData).subscribe({
         next: (response) => {
           console.log('Part saved successfully:', response);
-          form.reset(); // resetuje formu
+          form.reset(); 
         },
         error: (error) => {
           console.error('Error saving part:', error);

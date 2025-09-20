@@ -33,6 +33,17 @@ header {
   flex-direction: column;
   gap: 20px;
 }
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.left-buttons, .right-buttons {
+  display: flex;
+  gap: 10px; /* razmak između dugmadi */
+}
 
 /* Desna kolona */
 .right-column {
