@@ -1,11 +1,36 @@
 <mat-card class="form-card">
   <mat-card-title>Add Part</mat-card-title>
   <mat-card-content>
-    <form class="form-container" #form="ngForm">
+    <form class="form-container" #form="ngForm" (ngSubmit)="onSave(form)">
       <!-- Engine -->
       <mat-form-field appearance="outline" class="form-field">
-        <mat-label>Part</mat-label>
-        <input matInput name="engine" ngModel required />
+        <mat-label>Part Name</mat-label>
+        <input matInput name="partName" ngModel required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Part Number</mat-label>
+        <input matInput name="partNumber" ngModel required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Description</mat-label>
+        <input matInput name="description" ngModel required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Serial Number</mat-label>
+        <input matInput name="serialNumber" ngModel required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>TSN</mat-label>
+        <input matInput name="tsn" ngModel required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>CSN</mat-label>
+        <input matInput name="csn" ngModel required />
       </mat-form-field>
 
       <!-- Submit -->

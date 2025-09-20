@@ -2,10 +2,28 @@
   <mat-card-title>Add Engine</mat-card-title>
   <mat-card-content>
     <form class="form-container" #form="ngForm">
-      <!-- Engine -->
+      <!-- Engine Name -->
       <mat-form-field appearance="outline" class="form-field">
-        <mat-label>Engine</mat-label>
-        <input matInput name="engine" ngModel required />
+        <mat-label>Engine Name</mat-label>
+        <input matInput name="engineName" ngModel required />
+      </mat-form-field>
+
+      <!-- Engine Type -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Engine Type</mat-label>
+        <input matInput name="engineType" ngModel required />
+      </mat-form-field>
+
+      <!-- TSN -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>TSN</mat-label>
+        <input matInput name="tsn" ngModel required />
+      </mat-form-field>
+
+      <!-- CSN -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>CSN</mat-label>
+        <input matInput name="csn" ngModel required />
       </mat-form-field>
 
       <!-- Submit -->
