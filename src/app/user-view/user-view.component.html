@@ -1,0 +1,15 @@
+<mat-card *ngIf="user" class="user-card">
+  <mat-card-header>
+    <mat-card-title>Ulogovani korisnik</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>Username: {{ user.username }}</p>
+    <p>Name: {{ user.name }}</p>
+    <p>Email: {{ user.email }}</p>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #noUser>
+  <p>Nema ulogovanog korisnika</p>
+</ng-template>

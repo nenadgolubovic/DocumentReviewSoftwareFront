@@ -13,6 +13,7 @@ import { AddPartButtonComponent } from "./add-part-button/add-part-button.compon
 import { RegisterComponent } from './register/register.component';
 import { RegisterButtonComponent } from "./register-button/register-button.component";
 import { LogInButtonComponent } from "./log-in-button/log-in-button.component";
+import { UserViewComponent } from './user-view/user-view.component';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,8 @@ import { LogInButtonComponent } from "./log-in-button/log-in-button.component";
     AddPartButtonComponent,
     RegisterComponent,
     RegisterButtonComponent,
-    LogInButtonComponent
+    LogInButtonComponent,
+    UserViewComponent
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
