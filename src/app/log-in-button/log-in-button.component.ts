@@ -1,19 +1,24 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { LogInComponent } from '../log-in/log-in.component';
 
 @Component({
   selector: 'app-log-in-button',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, CommonModule, MatDialogModule],
   templateUrl: './log-in-button.component.html',
   styleUrls: ['./log-in-button.component.scss']
 })
 export class LogInButtonComponent {
-  logIn() {
-    console.log('Log In button clicked!');
-    // ovde možeš dodati logiku logovanja
+  constructor(private dialog: MatDialog) {}
+
+  openLogInForm() {
+    this.dialog.open(LogInComponent, {
+      width: '400px' // možeš prilagoditi širinu
+    });
   }
 }

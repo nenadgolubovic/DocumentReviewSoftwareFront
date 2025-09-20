@@ -16,7 +16,7 @@ export class UserViewComponent implements OnInit {
   user = {
     username: 'nenad',
     name: 'Nenad Golubovic',
-    email: 'nenadgolubovic@example.com'
+    email: 'nenadgolubo@example.com'
   };
 
   constructor() { }
