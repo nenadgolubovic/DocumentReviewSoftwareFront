@@ -35,7 +35,7 @@ export class RegisterComponent {
       return;
     }
 
-    this.http.post('http://localhost:8080/api/auth/register', this.registerForm.value, { responseType: 'text' })
+    this.http.post('http://localhost:8080/user/registration', this.registerForm.value, { responseType: 'text' })
       .subscribe({
         next: res => {
           this.message = res;
