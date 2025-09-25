@@ -8,8 +8,8 @@ import { Injectable } from '@angular/core';
 })
 export class PartService {
 
-  private apiUrlBasic = 'http://localhost:8080/part/basic'; 
-    private apiUrlFanBlades = 'http://localhost:8080/part/fanBlades'; 
+  private apiUrlBasic = 'http://localhost:8080/part/basic/save'; 
+    private apiUrlFanBlades = 'http://localhost:8080/part/fanBlades/save'; 
 
 
   constructor(private http: HttpClient) { }
