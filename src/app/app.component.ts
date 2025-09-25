@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { CommentListComponent } from "./components/comment-list/comment-list.component";
 import { DocumentViewComponent } from "./components/document-view/document-view.component";
 import { UploadButtonComponent } from "./components/upload-button/upload-button.component";
@@ -10,29 +10,23 @@ import { DocumentListComponent } from './components/document-list/document-list.
 import { AddPartButtonComponent } from "./components/add-part-button/add-part-button.component";
 import { RegisterComponent } from './components/register/register.component';
 import { LogInButtonComponent } from "./components/log-in-button/log-in-button.component";
-import { UserViewComponent } from './components/user-view/user-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentSectionComponent } from './components/comment-section/comment-section.component';
 import { RegisterButtonComponent } from './components/register-button/register-button.component';
 import { HomePageComponent } from "./components/home-page/home-page.component";
+import { EngineHomeComponent } from './components/engine-home/engine-home.component';
+import { MenuComponent } from "./components/menu/menu.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommentListComponent,
-    CommentSectionComponent,
-    UploadButtonComponent,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    DocumentListComponent,
-    AddPartButtonComponent,
-    RegisterButtonComponent,
-    LogInButtonComponent,
-    UserViewComponent,
     HttpClientModule,
-    HomePageComponent,
+    RouterModule,
+    MenuComponent
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

@@ -1,0 +1,22 @@
+.buttons-label{
+    display: flex;
+    gap: 10px;     
+    justify-content: flex-end;
+    padding: 20px; 
+
+}
+.wrapper{
+    height:80px;
+}
+
+.logged-user{
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 25px;
+
+}
+
+p{
+    margin-top: 7px;           
+  padding: 0; 
+}

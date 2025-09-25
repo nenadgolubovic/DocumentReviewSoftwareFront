@@ -7,6 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MessagePopupComponent } from '../shared/message-popup.component';
 import { AuthService } from '../../services/auth/auth.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -32,20 +35,27 @@ export class LogInComponent {
   }
   username: string = '';
   password: string = '';
+  message: string='';
 
   @ViewChild('popup') popup!: MessagePopupComponent;
 
-  constructor(private _authService: AuthService) {}
+  constructor(private _authService: AuthService,private dialog: MatDialog , private dialogRef: MatDialogRef<LogInComponent>,  private router: Router ) {
+    
+  }
 
   submit() {
         this.authService.loginUser(this.username, this.password).subscribe({
       next: (response) => {
-        console.log('Server response:', response); 
-        this.popup.show(response);
+        this.dialogRef.close();
+        this.router.navigate(['/engine-home']); 
+         this.dialog.open(SuccessDialogComponent, {
+                    data: { message: response.username + ', you are logged in succesfully!' },
+                    maxWidth: '800px'
+                  });
+
       },
-      error: (err) => {    
-        console.error('Greška:', err);
-        this.popup.show('Greška pri logovanju!');
+      error: () => {
+          this.message = "User is not found";
       }
     });
   }

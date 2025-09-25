@@ -1,0 +1,43 @@
+<div class="wrapper">
+  
+<div class="home-page">
+  <header>
+  </header>
+  <div class="button-row">
+    <div class="left-buttons">
+      <app-add-part-button></app-add-part-button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="left-column">
+      <app-upload-button></app-upload-button>
+      <app-document-list></app-document-list>
+    </div>
+
+    <div class="center-column">
+      <mat-card class="document-view-card">
+        <mat-card-header>
+          <mat-card-title>Selected Document</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="document-placeholder">
+          <div class="pdf-placeholder"></div>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary">
+            <mat-icon>download</mat-icon> Download
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div class="right-column">
+      <app-comment-section></app-comment-section>
+      <app-comment-list></app-comment-list>
+    </div>
+  </div>
+</div>
+
+</div>

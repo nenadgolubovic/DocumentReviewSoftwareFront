@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +35,8 @@ export class RegisterComponent {
     private fb: FormBuilder,
     private http: HttpClient,
     private dialog: MatDialog ,   
-    private dialogRef: MatDialogRef<RegisterComponent>  
+    private dialogRef: MatDialogRef<RegisterComponent>,
+    private router: Router   
 
   ) {
     this.registerForm = this.fb.group({
@@ -55,6 +57,7 @@ export class RegisterComponent {
       .subscribe({
         next: res => {
           this.dialogRef.close(); 
+          this.router.navigate(['/engine-home']); 
           this.dialog.open(SuccessDialogComponent, {
             data: { message: res },
             maxWidth: '800px'

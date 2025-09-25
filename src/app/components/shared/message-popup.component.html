@@ -1,6 +1,5 @@
-<div class="overlay" *ngIf="visible">
+<div class="overlay" *ngIf="visible" (click)="close()">
   <mat-card class="popup-card">
-    <p>{{ message }}</p>
-    <button mat-raised-button color="primary" (click)="close()">OK</button>
+    <p class="message">{{ message }}</p>
   </mat-card>
 </div>

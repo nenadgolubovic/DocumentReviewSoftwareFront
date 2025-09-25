@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddEngineButtonComponent } from './add-engine-button.component';
+import { EngineHomeComponent } from './engine-home.component';
 
-describe('AddEngineButtonComponent', () => {
-  let component: AddEngineButtonComponent;
-  let fixture: ComponentFixture<AddEngineButtonComponent>;
+describe('EngineHomeComponent', () => {
+  let component: EngineHomeComponent;
+  let fixture: ComponentFixture<EngineHomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddEngineButtonComponent]
+      imports: [EngineHomeComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddEngineButtonComponent);
+    fixture = TestBed.createComponent(EngineHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -5,7 +5,7 @@
       <!-- Engine -->
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Part Name</mat-label>
-        <input matInput name="partName" ngModel required />
+        <input matInput name="name" ngModel required />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-field">
@@ -32,6 +32,15 @@
         <mat-label>CSN</mat-label>
         <input matInput name="csn" ngModel required />
       </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Part Type</mat-label>
+      <mat-select name="partType" ngModel required>
+      <mat-option *ngFor="let partType of partTypes" [value]="partType">
+      {{ partType }}
+      </mat-option>
+    </mat-select>
+    </mat-form-field>
 
       <!-- Submit -->
       <button mat-raised-button color="primary" type="submit">

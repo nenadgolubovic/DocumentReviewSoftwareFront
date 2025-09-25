@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-success-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogContent, MatDialogActions, MatButtonModule],
+  imports: [CommonModule, MatDialogContent, MatButtonModule],
   templateUrl: './success-dialog.component.html',
   styleUrls: ['./success-dialog.component.scss']
 })

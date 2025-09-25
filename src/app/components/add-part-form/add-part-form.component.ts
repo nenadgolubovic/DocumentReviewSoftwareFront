@@ -6,15 +6,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { NgForm } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { MatSelectModule } from "@angular/material/select";
+import { CommonModule } from '@angular/common';
+import { PartService } from '../../services/part/part.service';
+import { partDto, partTypeEnum } from '../../models/partDto';
 
-interface Part {
-  partName: string;
-  partNumber: string;
-  description: string;
-  serialNumber: string;
-  tsn: string;
-  csn: string;
-}
+
 
 @Component({
   selector: 'app-add-part-form',
@@ -24,39 +21,31 @@ interface Part {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-  ],
+    MatSelectModule,
+    CommonModule
+],
   standalone:true,
   templateUrl: './add-part-form.component.html',
   styleUrl: './add-part-form.component.scss'
 })
 export class AddPartFormComponent {
+  partTypes = Object.values(partTypeEnum);        
 
-  private apiUrl = 'https://localhost:8080/part'; 
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private partService: PartService) {}
 
   onSave(form: NgForm) {
     if (form.valid) {
-      const partData: Part = {
-        partName: form.value.partName,
+
+      const partData: partDto = {
+        name : form.value.name,
         partNumber: form.value.partNumber,
         description: form.value.description,
         serialNumber: form.value.serialNumber,
-        tsn: form.value.tsn,
-        csn: form.value.csn
+        partType:form.value.partType
       };
-
-      this.http.post<Part>(this.apiUrl, partData).subscribe({
-        next: (response) => {
-          console.log('Part saved successfully:', response);
-          form.reset(); 
-        },
-        error: (error) => {
-          console.error('Error saving part:', error);
-        }
-      });
-    } else {
-      console.warn('Form is invalid');
+      
+      this.partService.Save(partData);
+   
     }
   }
 }

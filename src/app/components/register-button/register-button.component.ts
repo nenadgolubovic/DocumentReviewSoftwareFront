@@ -19,8 +19,7 @@ export class RegisterButtonComponent {
 
   register() {
     this.dialog.open(RegisterComponent, {
-      width: '400px', // širina popup-a
-      // optional: height: 'auto', disableClose: true
+      width: '400px',
     });
   }
 }
