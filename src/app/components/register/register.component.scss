@@ -20,5 +20,17 @@ button {
 
 .message {
   margin-top: 15px;
-  color: green;
+  color: var(--secondary-color);
+}
+.reg-wrapper{
+  margin: 10px;
+}
+.reg-title{
+  text-align: center;
+  margin: 20px;
+}
+.column-order{
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
 }

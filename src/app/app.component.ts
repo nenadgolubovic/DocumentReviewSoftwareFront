@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CommentListComponent } from "./comment-list/comment-list.component";
-import { CommentSectionComponent } from "./comment-section/comment-section.component";
-import { DocumentViewComponent } from "./document-view/document-view.component";
-import { UploadButtonComponent } from "./upload-button/upload-button.component";
+import { CommentListComponent } from "./components/comment-list/comment-list.component";
+import { DocumentViewComponent } from "./components/document-view/document-view.component";
+import { UploadButtonComponent } from "./components/upload-button/upload-button.component";
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { DocumentListComponent } from './document-list/document-list.component';
-import { AddEngineButtonComponent } from './add-engine-button/add-engine-button.component';
-import { AddPartButtonComponent } from "./add-part-button/add-part-button.component";
-import { RegisterComponent } from './register/register.component';
-import { RegisterButtonComponent } from "./register-button/register-button.component";
-import { LogInButtonComponent } from "./log-in-button/log-in-button.component";
-import { UserViewComponent } from './user-view/user-view.component';
+import { DocumentListComponent } from './components/document-list/document-list.component';
+import { AddPartButtonComponent } from "./components/add-part-button/add-part-button.component";
+import { RegisterComponent } from './components/register/register.component';
+import { LogInButtonComponent } from "./components/log-in-button/log-in-button.component";
+import { UserViewComponent } from './components/user-view/user-view.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CommentSectionComponent } from './components/comment-section/comment-section.component';
+import { RegisterButtonComponent } from './components/register-button/register-button.component';
 
 @Component({
   selector: 'app-root',
@@ -27,9 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatIconModule,
     DocumentListComponent,
-    AddEngineButtonComponent,
     AddPartButtonComponent,
-    RegisterComponent,
     RegisterButtonComponent,
     LogInButtonComponent,
     UserViewComponent,

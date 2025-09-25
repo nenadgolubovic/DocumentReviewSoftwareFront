@@ -4,7 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { RegisterComponent } from '../register/register.component'; // putanja do tvoje komponente
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-register-button',

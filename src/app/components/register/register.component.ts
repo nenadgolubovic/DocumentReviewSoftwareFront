@@ -7,25 +7,42 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, FormsModule, MatFormFieldModule, MatCardModule, MatInputModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule
+  ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
 
-  registerForm: FormGroup;   // ⬅ definicija forme
+  registerForm: FormGroup;
   message: string = '';
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
-    // ⬇ inicijalizacija forme
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private dialog: MatDialog ,   
+    private dialogRef: MatDialogRef<RegisterComponent>  
+
+  ) {
     this.registerForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5)]]
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      matchingPassword: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
 
@@ -35,11 +52,14 @@ export class RegisterComponent {
       return;
     }
 
-    this.http.post('http://localhost:8080/user/registration', this.registerForm.value, { responseType: 'text' })
+    this.http.post('http://localhost:8080/user/register', this.registerForm.value, { responseType: 'text' })
       .subscribe({
         next: res => {
-          this.message = res;
-          this.registerForm.reset();
+          this.dialogRef.close(); 
+          this.dialog.open(SuccessDialogComponent, {
+            data: { message: res },
+            maxWidth: '800px'
+          });
         },
         error: err => {
           this.message = err.error;

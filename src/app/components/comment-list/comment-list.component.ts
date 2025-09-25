@@ -8,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommentSectionComponent } from '../comment-section/comment-section.component';
-import { CommentService } from '../services/comment.service';
+import { CommentService } from '../../services/comment/comment.service';
 
 @Component({
   selector: 'app-comment-list',
