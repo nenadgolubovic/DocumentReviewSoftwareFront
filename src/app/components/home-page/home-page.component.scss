@@ -1,0 +1,15 @@
+.wrapper{
+    height: 100vh; 
+    background-image: url('C:/Users/Nikola/OneDrive/Radna površina/Nenad/Napredne softverske tehnologije/Document Review Software Front/Document-Review-Swoftware-Front/src/assets/images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.buttons-label{
+    display: flex;
+    gap: 10px;     
+    justify-content: flex-end;
+    padding: 20px; 
+
+}

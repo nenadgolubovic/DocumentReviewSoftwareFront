@@ -14,6 +14,7 @@ import { UserViewComponent } from './components/user-view/user-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentSectionComponent } from './components/comment-section/comment-section.component';
 import { RegisterButtonComponent } from './components/register-button/register-button.component';
+import { HomePageComponent } from "./components/home-page/home-page.component";
 
 @Component({
   selector: 'app-root',
@@ -30,7 +31,8 @@ import { RegisterButtonComponent } from './components/register-button/register-b
     RegisterButtonComponent,
     LogInButtonComponent,
     UserViewComponent,
-    HttpClientModule
+    HttpClientModule,
+    HomePageComponent,
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -8,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -16,13 +16,12 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule,
     FormsModule,
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule
-  ],
+    ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })

@@ -1,6 +1,6 @@
 <mat-card class="form-card">
   <div class="reg-wrapper">
-      <mat-card-title class="reg-title">Register</mat-card-title>
+      <mat-card-title class="reg-title">Registration Form</mat-card-title>
   <mat-card-content>
     <form class = "column-order" [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-container">
       <div class = "column-order">
@@ -42,7 +42,7 @@
 
 
       <!-- Submit -->
-      <button mat-raised-button color="primary" type="submit">
+      <button class ="register-button" mat-raised-button type="submit">
         Register
       </button>
 

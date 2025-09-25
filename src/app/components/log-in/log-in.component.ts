@@ -40,8 +40,8 @@ export class LogInComponent {
   submit() {
         this.authService.loginUser(this.username, this.password).subscribe({
       next: (response) => {
-        console.log('Server response:', response); // ovo će biti string
-        this.popup.show(response); // prikaz teksta u popup-u
+        console.log('Server response:', response); 
+        this.popup.show(response);
       },
       error: (err) => {    
         console.error('Greška:', err);

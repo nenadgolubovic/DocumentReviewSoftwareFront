@@ -21,6 +21,7 @@ button {
 .message {
   margin-top: 15px;
   color: var(--secondary-color);
+  color: var(--error-color);
 }
 .reg-wrapper{
   margin: 10px;
@@ -28,9 +29,15 @@ button {
 .reg-title{
   text-align: center;
   margin: 20px;
+  color:var(--primary-color);
+  font-weight: bold;
 }
 .column-order{
   display: flex;
   flex-direction: column;
   gap: 10px; 
+}
+
+.register-button{
+  font-size: 18px;
 }
