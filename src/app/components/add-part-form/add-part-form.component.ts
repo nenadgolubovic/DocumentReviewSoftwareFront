@@ -10,6 +10,8 @@ import { MatSelectModule } from "@angular/material/select";
 import { CommonModule } from '@angular/common';
 import { PartService } from '../../services/part/part.service';
 import { partDto, partTypeEnum } from '../../models/partDto';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -31,7 +33,7 @@ import { partDto, partTypeEnum } from '../../models/partDto';
 export class AddPartFormComponent {
   partTypes = Object.values(partTypeEnum);        
 
-  constructor(private http: HttpClient, private partService: PartService) {}
+  constructor(private http: HttpClient, private partService: PartService, private dialog: MatDialog, private dialogRef: MatDialogRef<AddPartFormComponent>) {}
 
   onSave(form: NgForm) {
     if (form.valid) {
@@ -44,8 +46,20 @@ export class AddPartFormComponent {
         partType:form.value.partType
       };
       
-      this.partService.Save(partData);
-   
+      this.partService.save(partData).subscribe({
+        next: (res) => {
+          this.dialogRef.close();
+          this.dialog.open(SuccessDialogComponent, {
+            data: { message: 'Part saved successfully!' }
+          });
+        },
+        error: (err) => {
+          console.error(err);
+          this.dialog.open(SuccessDialogComponent, {
+           data: { message: 'Error saving part!' }
+          });
+        }
+      })
     }
   }
 }

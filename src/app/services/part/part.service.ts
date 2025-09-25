@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { partDto, partTypeEnum } from '../../models/partDto';
 
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,15 @@ export class PartService {
 
   constructor(private http: HttpClient) { }
 
-  Save(partData:partDto){
-        if(partData.partType == partTypeEnum.Basic){
-          this.http.post<partDto>(this.apiUrlBasic, partData).subscribe();
-        }
-        if(partData.partType==partTypeEnum.FanBlade){
-          this.http.post<partDto>(this.apiUrlFanBlades, partData).subscribe();
-        }
-  }
+  save(partData: partDto): Observable<partDto> {
+    if (partData.partType === partTypeEnum.Basic) {
+      return this.http.post<partDto>(this.apiUrlBasic, partData);
+    } else if (partData.partType === partTypeEnum.FanBlade) {
+      return this.http.post<partDto>(this.apiUrlFanBlades, partData);
+    } else {
+      throw new Error('Unknown part type');
+    }
+}
+
+  
 }
