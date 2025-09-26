@@ -1,0 +1,69 @@
+    .actions-wrapper button {
+      width: 40px;           /* širina dugmeta */
+      height: 40px;          /* visina dugmeta */
+      min-width: 40px !important; /* override Material min-width */
+      padding: 0;            /* uklanja padding */
+      border-radius: 50%;    /* okruglo dugme */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: none !important; /* uklanja shadow */
+      color: var(--white-color) ;   
+      transition: 0.3s;
+    }
+    .actions-wrapper button mat-icon {
+        margin-right: -6px; /* 6px razmak sa desne strane ikonice */
+    }
+    
+     .visibility-btn {background-color: var(--primary-color); }
+    .download-btn   { background-color: var(--secondary-color); }
+    .delete-btn     { background-color: var(--error-color); }
+
+    .visibility-btn:hover { color: var(--primary-color) !important; background-color: var(--white-color) !important; }
+    .download-btn:hover   { color: var(--secondary-color) !important; background-color: var(--white-color) !important; }
+    .delete-btn:hover     { color: var(--error-color) !important; background-color: var(--white-color) !important; }
+    
+    .part-list{
+
+        display: flex;
+        justify-content: center; /* centriranje po horizontali */
+        min-height: 100vh;  
+        margin-top: 20px;  
+    }
+
+    .table-wrapper{
+        width: 80%;
+        max-width: 1000px;  
+
+    }
+
+    .full-width-table{
+        background-color: var(--light);
+    }
+
+    .paginator{
+        background-color: var(--light);
+
+    }
+
+      .search-box {
+      --mdc-filled-text-field-container-color: var(--primary-color);
+      --mdc-filled-text-field-label-text-color: var(--white-color);
+      --mdc-filled-text-field-input-text-color: var(--white-color); 
+      --mdc-filled-text-field-caret-color:var(--white-color);      
+    }
+
+    .search-wrapper {
+      display: flex;
+      justify-content: flex-end; /* gura element skroz desno */
+      margin-top: 20px; /* po potrebi */
+      padding-right: 20px; /* malo razmaka od ivice */
+    }
+
+    .actions-wrapper {
+       display: flex;
+        justify-content: center; 
+        align-items: center;       
+        gap: 8px;                  
+        padding: 0;   
+    }

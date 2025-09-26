@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommentSectionComponent } from "../comment-section/comment-section.component";
 import { CommentListComponent } from "../comment-list/comment-list.component";
 import { MatButtonModule } from "@angular/material/button";
+import { PartListComponent } from "../part-list/part-list.component";
 
 
 @Component({
@@ -19,7 +20,9 @@ import { MatButtonModule } from "@angular/material/button";
     MatIconModule,
     MatButtonModule,
     CommentSectionComponent,
-    CommentListComponent, MatCardModule],
+    CommentListComponent, MatCardModule,
+    PartListComponent
+],
   templateUrl: './engine-home.component.html',
   styleUrl: './engine-home.component.scss'
 })

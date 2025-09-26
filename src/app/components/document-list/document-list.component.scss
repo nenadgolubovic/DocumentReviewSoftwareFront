@@ -1,0 +1,43 @@
+    .document-list{
+
+        display: flex;
+        justify-content: center; /* centriranje po horizontali */
+        min-height: 100vh;  
+        margin-top: 20px;  
+    }
+
+    .table-wrapper{
+        width: 80%;
+        max-width: 1000px;  
+
+    }
+
+    .full-width-table{
+        background-color: var(--light);
+    }
+
+    .paginator{
+        background-color: var(--light);
+
+    }
+
+      .search-box {
+      --mdc-filled-text-field-container-color: var(--primary-color);
+      --mdc-filled-text-field-label-text-color: var(--white-color);
+      --mdc-filled-text-field-input-text-color: var(--white-color); 
+      --mdc-filled-text-field-caret-color:var(--white-color);      
+    }
+
+    .search-wrapper {
+      display: flex;
+      justify-content: flex-end; /* gura element skroz desno */
+      margin-top: 20px; /* po potrebi */
+      padding-right: 20px; /* malo razmaka od ivice */
+    }
+
+    .actions-wrapper {
+      display: flex;
+      gap: 8px; /* razmak između dugmadi */
+    }
+    
+    

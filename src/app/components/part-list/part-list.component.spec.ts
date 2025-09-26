@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddEngineFormComponent } from './add-engine-form.component';
+import { PartListComponent } from './part-list.component';
 
-describe('AddEngineFormComponent', () => {
-  let component: AddEngineFormComponent;
-  let fixture: ComponentFixture<AddEngineFormComponent>;
+describe('PartListComponent', () => {
+  let component: PartListComponent;
+  let fixture: ComponentFixture<PartListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddEngineFormComponent]
+      imports: [PartListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddEngineFormComponent);
+    fixture = TestBed.createComponent(PartListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

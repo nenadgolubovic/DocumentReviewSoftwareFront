@@ -7,11 +7,12 @@
 }
 .wrapper{
     height:80px;
+    background-color: var(--primary-color);
 }
 
 .logged-user{
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--white-color);
     font-size: 25px;
 
 }
