@@ -45,21 +45,14 @@ export class AddPartFormComponent {
         serialNumber: form.value.serialNumber,
         partType:form.value.partType
       };
-      
-      this.partService.save(partData).subscribe({
-        next: (res) => {
-          this.dialogRef.close();
-          this.dialog.open(SuccessDialogComponent, {
-            data: { message: 'Part saved successfully!' }
-          });
-        },
-        error: (err) => {
-          console.error(err);
-          this.dialog.open(SuccessDialogComponent, {
-           data: { message: 'Error saving part!' }
-          });
-        }
-      })
+
+      this.partService.save(partData); // samo poziva funkciju, bez subscribe
+      this.dialogRef.close();
+      this.dialog.open(SuccessDialogComponent, {
+        data: { message: 'Part saved successfully!' }
+      });
+
+
     }
   }
 }

@@ -1,6 +1,13 @@
   <div class="part-list">
+    
   <div class="table-wrapper">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width-table">
+    <div class="search-wrapper">
+    <mat-form-field appearance="fill" class="search-box">
+      <mat-label>Search</mat-label>
+      <input class="search" matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <table mat-table #partTable [dataSource]="dataSource" class="mat-elevation-z8 full-width-table">
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Part Name </th>
@@ -39,6 +46,8 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+
+</table>
+<mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> 
 </div>
 </div>

@@ -1,18 +1,18 @@
     .actions-wrapper button {
-      width: 40px;           /* širina dugmeta */
-      height: 40px;          /* visina dugmeta */
-      min-width: 40px !important; /* override Material min-width */
-      padding: 0;            /* uklanja padding */
-      border-radius: 50%;    /* okruglo dugme */
+      width: 40px;           
+      height: 40px;          
+      min-width: 40px !important; 
+      padding: 0;            
+      border-radius: 50%;    
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: none !important; /* uklanja shadow */
+      box-shadow: none !important;
       color: var(--white-color) ;   
       transition: 0.3s;
     }
     .actions-wrapper button mat-icon {
-        margin-right: -6px; /* 6px razmak sa desne strane ikonice */
+        margin-right: -6px; 
     }
     
      .visibility-btn {background-color: var(--primary-color); }
@@ -34,6 +34,7 @@
     .table-wrapper{
         width: 80%;
         max-width: 1000px;  
+        
 
     }
 
