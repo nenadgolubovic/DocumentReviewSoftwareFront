@@ -1,10 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from "@angular/material/paginator";
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { documentDto } from '../../models/documentDto';
 import { DocumentService } from '../../services/documet/document.service';
 import { PartService } from '../../services/part/part.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-document-list',
@@ -12,7 +13,8 @@ import { PartService } from '../../services/part/part.service';
   imports: [
     MatTableModule,
     MatPaginatorModule,
-    DatePipe
+    DatePipe,
+    CommonModule
   ],
   templateUrl: './document-list.component.html',
   styleUrls: ['./document-list.component.scss']
@@ -20,10 +22,14 @@ import { PartService } from '../../services/part/part.service';
 export class DocumentListComponent {
   displayedColumns: string[] = ['documentName', 'date'];
   dataSource = new MatTableDataSource<documentDto>([]);
+  hoveredRow: any = null; 
+  @Output() pdfSelected = new EventEmitter<SafeResourceUrl>(); 
 
+   selectedFile: SafeResourceUrl | null = null;
+   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private documentService: DocumentService,private partService:PartService) {}
+  constructor(private documentService: DocumentService,private partService:PartService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     this.loadDocuments();
@@ -39,7 +45,9 @@ export class DocumentListComponent {
         console.log(docs);
         this.dataSource.data = docs.map(doc => ({
           ...doc,
-          date: new Date(doc.documentDate)
+          date: new Date(doc.documentDate),
+          documentRoute: `http://localhost:8080/document/${doc.documentName}` 
+
         }));
       },
       error: (err) => {
@@ -47,4 +55,15 @@ export class DocumentListComponent {
       }
     });
   }
+
+
+  onRowClicked(row: any) {
+    
+    const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(row.documentRoute);
+    this.selectedFile = safeUrl;
+    
+    // ovo šalje URL roditelju (EngineHomeComponent)
+    this.pdfSelected.emit(row);
+    console.log("Emitujem row:", row);
+    }
 }

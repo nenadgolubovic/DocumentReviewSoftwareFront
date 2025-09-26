@@ -14,6 +14,8 @@ export class PartService {
   private deleteRoute = 'http://localhost:8080/part/'; 
 
 
+  contentVisible = false;
+  currentPartId = -1;
   private partsSubject = new BehaviorSubject<partDto[]>([]);
   public parts$ = this.partsSubject.asObservable();
 
@@ -22,9 +24,10 @@ export class PartService {
   save(partData: partDto): void {
     let saveObs: Observable<void>;
 
-    if (partData.partType === partTypeEnum.Basic) {
+    if (partData.type === partTypeEnum.Basic) {
       saveObs = this.http.post<void>(this.apiUrlBasic, partData);
-    } else if (partData.partType === partTypeEnum.FanBlade) {
+    } else if (partData.type === partTypeEnum.FanBlade) {
+      console.log(partData);
       saveObs = this.http.post<void>(this.apiUrlFanBlades, partData);
     } else {
       throw new Error('Unknown part type');

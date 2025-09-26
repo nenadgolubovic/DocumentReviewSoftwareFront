@@ -4,10 +4,10 @@ export interface partDto {
   partNumber: string;
   description: string;
   serialNumber: string;
-  partType : partTypeEnum
+  type : partTypeEnum
 }
 
 export enum partTypeEnum {
   Basic = 'Basic',
-  FanBlade = 'Fan Blade'
+  FanBlade = 'FanBlade'
 }

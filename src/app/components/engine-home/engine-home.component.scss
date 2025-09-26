@@ -84,6 +84,15 @@ header {
   border-radius: 30px;
 }
 
+.document-placeholder {
+  width: 90%;   // širina diva
+  height: 300px;  // visina diva
+  .pdf-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;  // sprečava da PDF iskače van diva
+  }
+}
 /* Responsive */
 @media (max-width: 1200px) {
   .content {

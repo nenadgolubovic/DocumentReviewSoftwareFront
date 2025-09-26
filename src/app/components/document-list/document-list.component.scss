@@ -6,3 +6,13 @@
         background-color: var(--light);
 
     }
+
+
+.hover-row {
+  background-color: var(--primary-color) !important;
+  color: var(--white-color) !important;
+
+  .mat-cell {
+    color: var(--white-color) !important;
+  }
+}

@@ -8,11 +8,10 @@
     </div>
     <app-part-list></app-part-list>
 
-
-
     <div *ngIf="partService.contentVisible==true" class="content">
       <div class="documet-list">
-        <app-document-list></app-document-list>
+
+      <app-document-list (pdfSelected)="onPdfSelected($event)"></app-document-list>
 
       </div>
       <div class="center-column">
@@ -22,14 +21,19 @@
           </mat-card-header>
 
           <mat-card-content class="document-placeholder">
-            <div class="pdf-placeholder"></div>
+            <div *ngIf="selectedFile" class="pdf-container">
+                <iframe 
+                  [src]="selectedFile" 
+                  width="100%" 
+                  height="300px" 
+                  style="border:none;">
+                </iframe>
+            </div>
+            <div *ngIf="!selectedFile">
+              <p>No document selected</p>
+            </div>
           </mat-card-content>
 
-          <mat-card-actions>
-            <button mat-raised-button color="primary">
-              <mat-icon>download</mat-icon> Download
-            </button>
-          </mat-card-actions>
         </mat-card>
       </div>
 

@@ -9,7 +9,7 @@ import { PartListComponent } from "../part-list/part-list.component";
 import { DocumentListComponent } from "../document-list/document-list.component";
 import { CommonModule } from "@angular/common";
 import { PartService } from "../../services/part/part.service";
-
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-engine-home',
@@ -29,8 +29,15 @@ import { PartService } from "../../services/part/part.service";
 })
 
 export class EngineHomeComponent {
-  
-  constructor(public partService:PartService){
+  selectedFile: SafeResourceUrl | null = null;
 
+  constructor(public partService:PartService, private sanitizer: DomSanitizer){
   }
+    
+  onPdfSelected(row: any) {
+  const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(row.documentRoute);
+  this.selectedFile = safeUrl;
+  console.log("Primljen row iz childa:", row);
+  }
+
 }
