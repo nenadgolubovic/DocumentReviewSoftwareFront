@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { partDto, partTypeEnum } from '../../models/partDto';
 import { PartService } from '../../services/part/part.service';
-import { UploadButtonComponent } from '../upload-button/upload-button.component';
+import { UploadButtonComponent } from '../buttons/upload-button/upload-button.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -20,7 +20,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrl: './part-list.component.scss'
 })
 export class PartListComponent {
-  displayedColumns: string[] = ['name', 'partNo', 'serialNo','partType','actions'];
+  displayedColumns: string[] = ['name', 'partNo', 'serialNo','type','actions'];
 
   dataSource = new MatTableDataSource<partDto>([]);
 
@@ -47,7 +47,12 @@ export class PartListComponent {
       this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    viewDocument(doc: partDto) { console.log('View', doc); }
+    viewDocument(id: number) { 
+
+      this.partService.contentVisible=!this.partService.contentVisible;
+
+      this.partService.currentPartId = id;
+    }
 
     uploadDocument(id: number) { 
         this.dialog.open(UploadButtonComponent, {

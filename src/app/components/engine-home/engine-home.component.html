@@ -7,8 +7,14 @@
       </div>
     </div>
     <app-part-list></app-part-list>
-    <div class="content">
 
+
+
+    <div *ngIf="partService.contentVisible==true" class="content">
+      <div class="documet-list">
+        <app-document-list></app-document-list>
+
+      </div>
       <div class="center-column">
         <mat-card class="document-view-card">
           <mat-card-header>

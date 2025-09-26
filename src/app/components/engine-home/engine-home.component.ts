@@ -6,6 +6,9 @@ import { CommentSectionComponent } from "../comment-section/comment-section.comp
 import { CommentListComponent } from "../comment-list/comment-list.component";
 import { MatButtonModule } from "@angular/material/button";
 import { PartListComponent } from "../part-list/part-list.component";
+import { DocumentListComponent } from "../document-list/document-list.component";
+import { CommonModule } from "@angular/common";
+import { PartService } from "../../services/part/part.service";
 
 
 @Component({
@@ -17,11 +20,17 @@ import { PartListComponent } from "../part-list/part-list.component";
     MatButtonModule,
     CommentSectionComponent,
     CommentListComponent, MatCardModule,
-    PartListComponent
+    PartListComponent,
+    DocumentListComponent,
+    CommonModule
 ],
   templateUrl: './engine-home.component.html',
   styleUrl: './engine-home.component.scss'
 })
-export class EngineHomeComponent {
 
+export class EngineHomeComponent {
+  
+  constructor(public partService:PartService){
+
+  }
 }

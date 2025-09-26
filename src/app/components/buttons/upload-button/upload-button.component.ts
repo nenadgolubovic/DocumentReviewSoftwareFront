@@ -4,10 +4,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { documentDto } from '../../models/documentDto';
+import { documentDto } from '../../../models/documentDto';
 import { MatInputModule } from "@angular/material/input";
-import { DocumentService } from '../../services/document/document.service';
-import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { DocumentService } from '../../../services/documet/document.service';
+import { SuccessDialogComponent } from '../../success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-upload-button',

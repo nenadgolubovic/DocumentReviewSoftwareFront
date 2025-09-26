@@ -44,7 +44,7 @@ export class AddPartFormComponent {
         partNumber: form.value.partNumber,
         description: form.value.description,
         serialNumber: form.value.serialNumber,
-        partType:form.value.partType
+        type:form.value.partType
       };
 
       this.partService.save(partData); // samo poziva funkciju, bez subscribe

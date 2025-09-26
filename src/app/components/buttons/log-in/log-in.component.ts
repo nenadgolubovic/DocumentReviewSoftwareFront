@@ -5,11 +5,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MessagePopupComponent } from '../shared/message-popup.component';
-import { AuthService } from '../../services/auth/auth.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth/auth.service';
+import { MessagePopupComponent } from '../../shared/message-popup.component';
+import { SuccessDialogComponent } from '../../success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-log-in',
