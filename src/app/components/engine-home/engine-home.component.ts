@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { AddPartButtonComponent } from "../add-part-button/add-part-button.component";
-import { UploadButtonComponent } from "../upload-button/upload-button.component";
 import { MatCard, MatCardModule } from "@angular/material/card";
 import { MatIconModule } from '@angular/material/icon';
 import { CommentSectionComponent } from "../comment-section/comment-section.component";
@@ -13,7 +12,6 @@ import { PartListComponent } from "../part-list/part-list.component";
   selector: 'app-engine-home',
   imports: [
     AddPartButtonComponent,
-    UploadButtonComponent,
     MatCard,
     MatIconModule,
     MatButtonModule,

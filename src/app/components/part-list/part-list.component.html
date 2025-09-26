@@ -34,8 +34,8 @@
         <button mat-raised-button class="visibility-btn" >
           <mat-icon>visibility</mat-icon> 
         </button>
-        <button mat-raised-button class="download-btn" >
-          <mat-icon>download</mat-icon> 
+        <button mat-raised-button class="upload-btn" (click)="uploadDocument(part.partId)" >
+          <mat-icon>cloud_upload</mat-icon>
         </button>
         <button mat-raised-button class="delete-btn" (click)="deletePart(part.partId)">
           <mat-icon>delete</mat-icon> 

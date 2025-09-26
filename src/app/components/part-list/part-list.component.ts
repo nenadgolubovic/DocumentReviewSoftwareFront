@@ -10,7 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { partDto, partTypeEnum } from '../../models/partDto';
 import { PartService } from '../../services/part/part.service';
-import { BehaviorSubject } from 'rxjs';
+import { UploadButtonComponent } from '../upload-button/upload-button.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-part-list',
@@ -26,11 +27,11 @@ export class PartListComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private partService: PartService) {}
+  constructor(private partService: PartService,private dialog: MatDialog ) {}
 
   ngOnInit(): void {
     this.partService.parts$.subscribe(data => {
-      this.dataSource.data = data; // svaki put kad se doda novi part, tabela se osvežava
+      this.dataSource.data = data; 
     });
 
     this.partService.getAll();
@@ -48,8 +49,13 @@ export class PartListComponent {
 
     viewDocument(doc: partDto) { console.log('View', doc); }
 
-    downloadDocument(part: partDto) { console.log('Download', part); }
-        
+    uploadDocument(id: number) { 
+        this.dialog.open(UploadButtonComponent, {
+        width: '600px',
+        height: '300px',
+        data: { id }
+      });
+    }
 
     deletePart(id: number): void {
         this.partService.delete(id); 

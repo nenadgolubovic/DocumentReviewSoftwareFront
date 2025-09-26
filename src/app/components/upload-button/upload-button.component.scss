@@ -1,5 +1,58 @@
-.button-row {
+.popup-wrapper {
   display: flex;
-  gap: 16px; /* razmak između */
-  align-items: center; /* vertikalno centriranje */
+  flex-direction: column;
+  min-height: 250px; /* visina popup-a */
+}
+.title-wrapper {  
+  padding: 16px;
+
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;  
+  background-color: var(--primary-color);
+
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--white-color);
+}
+
+.subtitle {
+  padding: 16px;
+  padding-top: 30px;
+  padding-left: 100px; /* horizontalno centriranje */
+  
+  margin-bottom: 20px;
+  text-align: start;
+  color: var(--primary-color);
+}
+
+.file-upload-container {
+  padding: 16px;
+
+  flex: 1; /* zauzima prostor između sadržaja i dugmeta */
+  display: flex;
+  justify-content: start;
+  padding-left: 100px; /* horizontalno centriranje */
+  align-items: center;     /* vertikalno centriranje */
+}
+
+.file-input {
+
+  display: block;
+}
+
+.popup-footer {
+  padding: 16px;
+  display: flex;
+  justify-content: end; /* centrirano dugme na dnu */
+  margin-top: 16px;
+}
+
+.upload-btn{
+  width: 200px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
 }

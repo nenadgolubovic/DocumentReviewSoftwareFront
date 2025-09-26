@@ -15,12 +15,12 @@
         margin-right: -6px; 
     }
     
-     .visibility-btn {background-color: var(--primary-color); }
-    .download-btn   { background-color: var(--secondary-color); }
+    .visibility-btn {background-color: var(--primary-color); }
+    .upload-btn   { background-color: var(--secondary-color); }
     .delete-btn     { background-color: var(--error-color); }
 
     .visibility-btn:hover { color: var(--primary-color) !important; background-color: var(--white-color) !important; }
-    .download-btn:hover   { color: var(--secondary-color) !important; background-color: var(--white-color) !important; }
+    .upload-btn:hover   { color: var(--secondary-color) !important; background-color: var(--white-color) !important; }
     .delete-btn:hover     { color: var(--error-color) !important; background-color: var(--white-color) !important; }
     
     .part-list{

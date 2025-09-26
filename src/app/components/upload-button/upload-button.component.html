@@ -1,16 +1,17 @@
-<mat-card class="upload-card">
-  <mat-card-header>
-    <mat-card-title>Upload Document</mat-card-title>
-    <mat-card-subtitle>Select a file and submit</mat-card-subtitle>
-  </mat-card-header>
-
-  <mat-card-content>
-    <input type="file" />
-  </mat-card-content>
-
-  <mat-card-actions>
-    <button mat-raised-button color="primary" >
-      <mat-icon>cloud_upload</mat-icon> Upload
-    </button>
-  </mat-card-actions>
-</mat-card>
+<div class="popup-wrapper">
+  <div class="title-wrapper">
+    <div class="title">Upload Document</div>
+  </div>
+    
+    <div class="subtitle">Select a file and submit</div>
+    
+    <div class="file-upload-container">
+      <input type="file" (change)="onFileSelected($event)" class="file-input" />
+    </div>
+    
+    <div class="popup-footer">
+      <button mat-raised-button class="upload-btn" color="primary" (click)="upload()">
+        <mat-icon>cloud_upload</mat-icon> Upload
+      </button>
+  </div>
+</div>
