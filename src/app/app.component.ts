@@ -6,7 +6,6 @@ import { UploadButtonComponent } from "./components/upload-button/upload-button.
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { DocumentListComponent } from './components/document-list/document-list.component';
 import { AddPartButtonComponent } from "./components/add-part-button/add-part-button.component";
 import { RegisterComponent } from './components/register/register.component';
 import { LogInButtonComponent } from "./components/log-in-button/log-in-button.component";

@@ -29,25 +29,30 @@ export class PartListComponent {
   constructor(private partService: PartService) {}
 
   ngOnInit(): void {
-  this.partService.parts$.subscribe(data => {
-    this.dataSource.data = data; // svaki put kad se doda novi part, tabela se osvežava
-  });
+    this.partService.parts$.subscribe(data => {
+      this.dataSource.data = data; // svaki put kad se doda novi part, tabela se osvežava
+    });
 
-  // inicijalno povlačenje podataka
-  this.partService.getAll();
-}
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.partService.getAll();
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+    ngAfterViewInit() {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
 
-  viewDocument(doc: partDto) { console.log('View', doc); }
-  downloadDocument(doc: partDto) { console.log('Download', doc); }
-  deleteDocument(doc: partDto) { console.log('Delete', doc); }
-}
+    applyFilter(event: Event) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
+
+    viewDocument(doc: partDto) { console.log('View', doc); }
+
+    downloadDocument(part: partDto) { console.log('Download', part); }
+        
+
+    deletePart(id: number): void {
+        this.partService.delete(id); 
+    }
+  }
+  

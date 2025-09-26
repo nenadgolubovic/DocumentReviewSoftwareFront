@@ -39,6 +39,7 @@ export class AddPartFormComponent {
     if (form.valid) {
 
       const partData: partDto = {
+        
         name : form.value.name,
         partNumber: form.value.partNumber,
         description: form.value.description,

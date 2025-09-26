@@ -10,7 +10,9 @@ export class PartService {
 
   private apiUrlBasic = 'http://localhost:8080/part/basic/save'; 
   private apiUrlFanBlades = 'http://localhost:8080/part/fanBlades/save'; 
-  private getRoutes = 'http://localhost:8080/part/all'; 
+  private getRoutes = 'http://localhost:8080/part/all';   
+  private deleteRoute = 'http://localhost:8080/part/'; 
+
 
   private partsSubject = new BehaviorSubject<partDto[]>([]);
   public parts$ = this.partsSubject.asObservable();
@@ -41,7 +43,22 @@ export class PartService {
       this.partsSubject.next(data);
       console.log(data);
       },
-      error: (err) => console.error(err)
+      error: (err) => {
+          if (err.status === 400) {
+            this.partsSubject.next([]);
+          }
+          console.error(err);
+        }
       });
   }
+
+    delete(id: number): void {
+     this.http.delete<string>(`${this.deleteRoute}${id}`, { responseType: 'text' as 'json' })
+       .subscribe({
+         next: (res) => {
+           this.getAll();
+         },
+         error: (err) => console.error(err)
+       });
+    }
 }

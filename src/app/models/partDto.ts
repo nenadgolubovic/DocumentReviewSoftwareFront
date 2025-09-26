@@ -1,4 +1,5 @@
 export interface partDto {
+  partId?:number;
   name: string;
   partNumber: string;
   description: string;
