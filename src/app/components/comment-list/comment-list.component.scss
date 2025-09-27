@@ -1,24 +1,78 @@
-.comment-list {
+.comment-carousel-container {
+  position: relative;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-carousel-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
   gap: 20px;
-  max-width: 600px;
-  margin: 30px auto;
+  scroll-snap-type: x mandatory;
+  padding: 20px 60px; /* više paddinga sa strane za razmak strelica */
+  flex: 1;
+
+  /* Sakrij horizontalni scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.comment-carousel-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .comment-card {
-  padding: 15px;
+  flex: 0 0 300px; /* fiksna širina kartice */
+  scroll-snap-align: center;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: var(--black);
+  padding: 15px;
 }
 
-mat-card-actions {
+.carousel-arrow {
+  cursor: pointer;
+  font-size: 36px;
+  user-select: none;
+  margin: 0 10px; /* manji margin da strelice budu blizu wrappera */
+  color: var(--grey);
+  z-index: 10;
+  background: none;
+  border: none;
+}
+
+.carousel-arrow:hover {
+  color: vra(--black);
+}
+
+.comment-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
 }
 
-.rating-select {
-  width: 120px;
+/* Klikabilne zvezdice */
+.star-rating {
+  display: flex;
+  gap: 5px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.star {
+  color: var(--grey);
+  transition: color 0.2s;
+}
+
+.star.filled {
+  color: var(--gold);
+}
+
+.user{
+  color:var(--primary-color);
+  font-size: 15px;
+  margin-bottom: 10px;
 }

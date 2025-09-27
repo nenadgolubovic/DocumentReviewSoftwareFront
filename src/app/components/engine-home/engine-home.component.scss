@@ -25,7 +25,8 @@ header {
   padding: 100px;
   background-color: var(--primary-color);
   margin-top : 50px;
-  border-radius: 30px;
+  border-radius: 30px; 
+  flex-direction: column; 
 }
 
 
@@ -93,6 +94,19 @@ header {
     overflow: hidden;  // sprečava da PDF iskače van diva
   }
 }
+
+.content-up{
+    display: flex;
+    flex-direction: row; 
+    gap: 16px; 
+}
+
+.footer{
+  display: flex;
+    flex-direction: row; 
+    gap: 16px; 
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
   .content {

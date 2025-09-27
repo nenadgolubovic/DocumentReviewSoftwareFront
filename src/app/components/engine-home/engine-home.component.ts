@@ -30,6 +30,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 export class EngineHomeComponent {
   selectedFile: SafeResourceUrl | null = null;
+  selectedDocument: any;
 
   constructor(public partService:PartService, private sanitizer: DomSanitizer){
   }
@@ -37,7 +38,9 @@ export class EngineHomeComponent {
   onPdfSelected(row: any) {
   const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(row.documentRoute);
   this.selectedFile = safeUrl;
-  console.log("Primljen row iz childa:", row);
   }
 
+  onDocumentSelected(doc: any) {
+    this.selectedDocument = doc;
+  }
 }

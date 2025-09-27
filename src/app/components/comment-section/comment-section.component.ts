@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -29,6 +29,7 @@ export class CommentSectionComponent implements OnInit {
   commentTitle: string = '';
   commentText: string = '';
   comments: any[] = [];
+  @Input() selectedDocument: any;  
 
   constructor( private commentService:CommentService) {}
 
@@ -36,13 +37,21 @@ export class CommentSectionComponent implements OnInit {
   }
 
   submitComment() {
+
+    if (!this.selectedDocument) {
+      console.warn("Document is not selected");
+      return;
+    }
+    console.log(this.selectedDocument);
+
    const newComment = {
      commentTitle: this.commentTitle,
      comment: this.commentText,
      commentDate: new Date(),
      userId: 1,
      isApproved: false,
-     rate: null
+     rate: null,
+     documentId : this.selectedDocument.documentId
    };
      this.commentService.postComment(newComment).subscribe(() => {
      this.commentTitle = '';

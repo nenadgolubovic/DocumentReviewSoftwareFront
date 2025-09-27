@@ -22,8 +22,10 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class DocumentListComponent {
   displayedColumns: string[] = ['documentName', 'date'];
   dataSource = new MatTableDataSource<documentDto>([]);
-  hoveredRow: any = null; 
-  @Output() pdfSelected = new EventEmitter<SafeResourceUrl>(); 
+  hoveredRow: any = null;  
+
+  @Output() pdfSelected = new EventEmitter<any>(); 
+  @Output() documentSelected = new EventEmitter<any>();
 
    selectedFile: SafeResourceUrl | null = null;
    
@@ -61,9 +63,7 @@ export class DocumentListComponent {
     
     const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(row.documentRoute);
     this.selectedFile = safeUrl;
-    
-    // ovo šalje URL roditelju (EngineHomeComponent)
+    this.documentSelected.emit(row);
     this.pdfSelected.emit(row);
-    console.log("Emitujem row:", row);
     }
 }

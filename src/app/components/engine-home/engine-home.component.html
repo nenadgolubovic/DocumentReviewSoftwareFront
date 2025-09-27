@@ -9,39 +9,48 @@
     <app-part-list></app-part-list>
 
     <div *ngIf="partService.contentVisible==true" class="content">
-      <div class="documet-list">
+      <div class="content-up">
+        <div class="documet-list">
 
-      <app-document-list (pdfSelected)="onPdfSelected($event)"></app-document-list>
+        <app-document-list
+          (pdfSelected)="onPdfSelected($event)"
+          (documentSelected)="onDocumentSelected($event)">
+          </app-document-list>
 
-      </div>
-      <div class="center-column">
-        <mat-card class="document-view-card">
-          <mat-card-header>
-            <mat-card-title>Selected Document</mat-card-title>
-          </mat-card-header>
+        </div>
+        <div class="center-column">
+          <mat-card class="document-view-card">
+            <mat-card-header>
+              <mat-card-title>Selected Document</mat-card-title>
+            </mat-card-header>
 
-          <mat-card-content class="document-placeholder">
-            <div *ngIf="selectedFile" class="pdf-container">
-                <iframe 
-                  [src]="selectedFile" 
-                  width="100%" 
-                  height="300px" 
-                  style="border:none;">
-                </iframe>
+            <mat-card-content class="document-placeholder">
+              <div *ngIf="selectedFile" class="pdf-container">
+                  <iframe 
+                    [src]="selectedFile" 
+                    width="100%" 
+                    height="300px" 
+                    style="border:none;">
+                  </iframe>
+              </div>
+              <div *ngIf="!selectedFile">
+                <p>No document selected</p>
+              </div>
+            </mat-card-content>
+
+          </mat-card>
+        </div>
+
+        <div class="right-column">
+          <div class="right-column">
+            <app-comment-section [selectedDocument]="selectedDocument"></app-comment-section>
             </div>
-            <div *ngIf="!selectedFile">
-              <p>No document selected</p>
-            </div>
-          </mat-card-content>
-
-        </mat-card>
+        </div>
       </div>
-
-      <div class="right-column">
-        <app-comment-section></app-comment-section>
-        <app-comment-list></app-comment-list>
+      <div >
+        <app-comment-list class="footer" [documentId]="selectedDocument?.documentId"></app-comment-list>
       </div>
     </div>
   </div>
 
-</div>
+</div>          

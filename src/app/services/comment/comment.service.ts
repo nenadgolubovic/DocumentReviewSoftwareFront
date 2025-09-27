@@ -16,11 +16,16 @@ export class CommentService {
 
   
   postComment(comment: any): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/comment', comment)
+  return this.http.post<any>('http://localhost:8080/comment', comment)
     .pipe(
-      tap(() => this.loadComments().subscribe()) 
+      tap(() => {
+        console.log(this.commentsSubject.value);
+        const currentComments = this.commentsSubject.value;
+
+        this.commentsSubject.next([...currentComments, comment]);
+      })
     );
-  }
+}
 
   loadComments(): Observable<any[]> {
    return this.http.get<any[]>('http://localhost:8080/comment/all')
