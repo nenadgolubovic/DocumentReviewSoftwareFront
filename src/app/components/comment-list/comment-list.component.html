@@ -1,10 +1,9 @@
 <div class="comment-carousel-container">
-  <!-- Levi taster -->
+
   <button *ngIf="comments.length > 0" class="carousel-arrow left" (click)="scrollLeft()">
     &#10094;
   </button>
 
-  <!-- Carousel wrapper -->
   <div class="comment-carousel-wrapper" #carousel>
     <mat-card class="comment-card" *ngFor="let comment of comments">
       <mat-card-header>
@@ -14,15 +13,17 @@
 
       <mat-card-content>
         <p>{{ comment.comment }}</p>
-        <p><strong>Date:</strong> {{ comment.commentDate | date:'medium' }}</p>
+        <p class="date"><strong>Date:</strong> {{ comment.commentDate | date:'medium' }}</p>
       </mat-card-content>
 
       <mat-card-actions class="comment-actions">
-        <button mat-raised-button color="primary">
+        <button mat-raised-button *ngIf="comment.approved == false" class="not-approved-button" (click)="approve(comment)" >
+          <mat-icon>check</mat-icon> Approve
+        </button>
+          <button mat-raised-button *ngIf="comment.approved == true" class="approved-button" [disabled] >
           <mat-icon>check</mat-icon> Approve
         </button>
 
-        <!-- Klikabilne zvezdice -->
         <div class="star-rating">
           <span 
             *ngFor="let star of [1,2,3,4,5]" 
@@ -36,7 +37,6 @@
     </mat-card>
   </div>
 
-  <!-- Desni taster -->
   <button *ngIf="comments.length > 0" class="carousel-arrow right" (click)="scrollRight()">
     &#10095;
   </button>

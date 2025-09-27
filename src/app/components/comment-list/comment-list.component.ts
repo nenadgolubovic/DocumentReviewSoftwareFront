@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef, AfterViewInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -37,25 +37,27 @@ export class CommentListComponent implements OnInit, AfterViewInit {
 
   constructor(private commentService: CommentService) {}
 
-  ngOnInit() {
-    this.commentService.comments$.subscribe(data => {
-      if (this.documentId != null) {
-        // this.comments = data.filter(c => c.documentId === this.documentId);
-        this.comments=data;
-      }
+ ngOnInit() {
+
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['documentId'] && this.documentId !== null) {
+      this.loadCommentsForDocument(this.documentId);
+    }
+  }
+
+  loadCommentsForDocument(documentId: number) {
+    this.commentService.loadComments(documentId).subscribe({
+      next: (comments) => {
+        this.comments = comments; 
+        console.log(comments);
+      },
+      error: (err) => console.error(err)
     });
 
-    this.commentService.loadComments().subscribe({
-      next: (comments) => {
-        // if (this.documentId != null) {
-        //   this.comments = comments.filter(c => c.documentId === this.documentId);
-        // } else {
-          this.comments = comments;
-        // }
-      },
-      error: (err) => {
-        console.error('Error loading comments:', err);
-      }
+    this.commentService.comments$.subscribe(data => {
+      this.comments = data;
     });
   }
 
@@ -88,6 +90,22 @@ export class CommentListComponent implements OnInit, AfterViewInit {
   }
 
   setRating(comment: any, rating: number) {
-  comment.rating = rating;
+    comment.rating = rating;
+    this.commentService.setRating(comment.commentId,rating).subscribe({
+      next: () => {
+        comment.approved = true;
+      },
+      error: (err) => console.error(err)
+    });
+  }
+
+  approve(comment: any) {
+    this.commentService.approve(comment.commentId).subscribe({
+      next: () => {
+        comment.approved = true;
+      },
+      error: (err) => console.error(err)
+    });
+  }
 }
-}
+ 

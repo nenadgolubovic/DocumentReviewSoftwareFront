@@ -76,3 +76,18 @@
   font-size: 15px;
   margin-bottom: 10px;
 }
+
+.date{
+  font-size: 15px;
+}
+
+.not-approved-button{
+  background-color: var(--white-color);  
+  color: var(--primary-color);
+
+}
+
+.approved-button{
+  background-color: var(--success-color);
+  color: var(--white-color);
+}

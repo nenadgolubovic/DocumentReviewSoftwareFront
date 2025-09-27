@@ -49,7 +49,7 @@ export class CommentSectionComponent implements OnInit {
      comment: this.commentText,
      commentDate: new Date(),
      userId: 1,
-     isApproved: false,
+     approved: false,
      rate: null,
      documentId : this.selectedDocument.documentId
    };

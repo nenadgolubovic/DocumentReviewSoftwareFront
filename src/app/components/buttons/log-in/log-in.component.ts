@@ -44,7 +44,7 @@ export class LogInComponent {
   }
 
   submit() {
-        this.authService.loginUser(this.username, this.password).subscribe({
+      this.authService.loginUser(this.username, this.password).subscribe({
       next: (response) => {
         this.dialogRef.close();
         this.router.navigate(['/engine-home']); 

@@ -27,7 +27,6 @@ export class PartService {
     if (partData.type === partTypeEnum.Basic) {
       saveObs = this.http.post<void>(this.apiUrlBasic, partData);
     } else if (partData.type === partTypeEnum.FanBlade) {
-      console.log(partData);
       saveObs = this.http.post<void>(this.apiUrlFanBlades, partData);
     } else {
       throw new Error('Unknown part type');
@@ -44,7 +43,6 @@ export class PartService {
     this.http.get<partDto[]>(this.getRoutes).subscribe({
       next: (data) => {
       this.partsSubject.next(data);
-      console.log(data);
       },
       error: (err) => {
           if (err.status === 400) {
