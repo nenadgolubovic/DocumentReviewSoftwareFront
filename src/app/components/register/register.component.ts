@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -36,7 +37,8 @@ export class RegisterComponent {
     private http: HttpClient,
     private dialog: MatDialog ,   
     private dialogRef: MatDialogRef<RegisterComponent>,
-    private router: Router   
+    private router: Router,
+    private authService:AuthService   
 
   ) {
     this.registerForm = this.fb.group({
@@ -47,25 +49,24 @@ export class RegisterComponent {
     });
   }
 
-  onSubmit() {
+   onSubmit() {
     if (this.registerForm.invalid) {
       this.message = 'Please fill in all fields correctly!';
       return;
     }
 
-    this.http.post('http://localhost:8080/user/register', this.registerForm.value, { responseType: 'text' })
-      .subscribe({
-        next: res => {
-          this.dialogRef.close(); 
-          this.router.navigate(['/engine-home']); 
-          this.dialog.open(SuccessDialogComponent, {
-            data: { message: res },
-            maxWidth: '800px'
-          });
-        },
-        error: err => {
-          this.message = err.error;
-        }
-      });
+    this.authService.registerUser(this.registerForm.value).subscribe({
+      next: res => {
+        this.dialogRef.close();
+        this.router.navigate(['/engine-home']);
+        this.dialog.open(SuccessDialogComponent, {
+          data: { message: res },
+          maxWidth: '800px'
+        });
+      },
+      error: err => {
+        this.message = err.error;
+      }
+    });
   }
 }

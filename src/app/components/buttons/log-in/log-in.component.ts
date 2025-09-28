@@ -52,6 +52,7 @@ export class LogInComponent {
                     data: { message: response.username + ', you are logged in succesfully!' },
                     maxWidth: '800px'
                   });
+          this.authService
 
       },
       error: () => {

@@ -1,8 +1,8 @@
-<div class = "wrapper">
-    <div class="buttons-label">
-        <p class="logged-user">Nenad Golubovic</p>
-        <app-register-button></app-register-button>
-        <app-log-in-button></app-log-in-button>
-        <app-log-out-button></app-log-out-button>
-    </div>
+<div class="wrapper">
+  <div class="buttons-label">
+    <p class="logged-user" *ngIf="isLoggedIn">{{ username }}</p>
+    <app-register-button *ngIf="!isLoggedIn"></app-register-button>
+    <app-log-in-button *ngIf="!isLoggedIn"></app-log-in-button>
+    <app-log-out-button *ngIf="isLoggedIn" (click)="logout()" ></app-log-out-button>
+  </div>
 </div>

@@ -22,9 +22,10 @@ export class HomePageComponent implements OnInit {
       this.authService.getLoggedUser().subscribe({
         next: (res) => {
           this.loggedUser = res.username;
+          console.log('Logovani:', this.loggedUser);
         },
         error: (err) => {
-          console.error('Not auth:', err);
+          console.error('Nije autentifikovan:', err);
         }
       });
     }
