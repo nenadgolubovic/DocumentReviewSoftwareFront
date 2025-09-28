@@ -4,7 +4,8 @@ export interface partDto {
   partNumber: string;
   description: string;
   serialNumber: string;
-  type : partTypeEnum
+  type : partTypeEnum;
+  momentWeight : string;
 }
 
 export enum partTypeEnum {

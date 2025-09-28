@@ -7,10 +7,12 @@ import { BehaviorSubject, map, Observable, switchMap, tap } from 'rxjs';
 })
 export class CommentService {
 
-  comments: any[] = []; 
+  comments: any[] = [];   
+  public usernames: { [key: number]: string } = {}; 
+
   private commentsSubject = new BehaviorSubject<any[]>([]);
   comments$ = this.commentsSubject.asObservable();
-  loadApi ="http://localhost:8080/comment/getAllByDocumentIdAndUserId";
+  loadApi ="http://localhost:8080/comment/getAllByDocumentId";
   putCommentApproveApi ="http://localhost:8080/comment/approve";
   putCommentRatingApi ="http://localhost:8080/comment/rateComment";
   saveApi ="http://localhost:8080/comment";
@@ -32,7 +34,7 @@ export class CommentService {
   }
 
   loadComments(documentId:number): Observable<any[]> {
-   return this.http.get<any[]>(`${this.loadApi}/${documentId}/1`)
+   return this.http.get<any[]>(`${this.loadApi}/${documentId}`)
      .pipe(
        tap(data => this.commentsSubject.next(data)) 
      );
@@ -45,5 +47,6 @@ export class CommentService {
       return this.http.put(`${this.putCommentRatingApi}/${commentId}/${rate}`, null, { responseType: 'text' });
   }
 
+  
 }
 

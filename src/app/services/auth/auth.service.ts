@@ -14,6 +14,7 @@ export class AuthService {
   private getLoggedUserApi = 'http://localhost:8080/user/home'
   private logoutApi='http://localhost:8080/user/logout'
   private apiRegisterUrl = 'http://localhost:8080/user/register'
+  private getById = 'http://localhost:8080/user/findById'
 
   constructor(private http: HttpClient){
       this.checkLoginStatus();
@@ -80,6 +81,9 @@ export class AuthService {
   }
   getCurrentUser(): Observable<any> {
     return this.currentUser.asObservable();
+  }
+  getUserById(userId: number): Observable<any> {
+    return this.http.get(`${this.getById}/${userId}`);
   }
   
 }

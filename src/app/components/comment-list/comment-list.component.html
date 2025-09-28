@@ -7,12 +7,12 @@
   <div class="comment-carousel-wrapper" #carousel>
     <mat-card class="comment-card" *ngFor="let comment of comments">
       <mat-card-header>
-        <mat-card-title class="user">User: {{ comment.userId }}</mat-card-title>
+        <mat-card-title class="user"> User: {{ commentService.usernames[comment.userId]}}</mat-card-title>
         <mat-card-subtitle>Title: {{ comment.commentTitle }}</mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content>
-        <p>{{ comment.comment }}</p>
+        <p class="comment-text">{{ comment.comment }}</p>
         <p class="date"><strong>Date:</strong> {{ comment.commentDate | date:'medium' }}</p>
       </mat-card-content>
 
@@ -28,8 +28,10 @@
           <span 
             *ngFor="let star of [1,2,3,4,5]" 
             class="star" 
-            [class.filled]="star <= comment.rating" 
-            (click)="setRating(comment, star)">
+            [class.filled]="star <= (hoverRating || comment.rate)"
+            (click)="setRating(comment, star)"
+            (mouseenter)="hoverRating = star"
+            (mouseleave)="hoverRating = 0">
             &#9733;
           </span>
         </div>

@@ -35,15 +35,20 @@
       </mat-form-field>
 
     <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Part Type</mat-label>
-      <mat-select name="partType" ngModel required>
-      <mat-option *ngFor="let partType of partTypes" [value]="partType">
-      {{ partType }}
-      </mat-option>
-    </mat-select>
-    </mat-form-field>
+        <mat-label>Part Type</mat-label>
+        <mat-select [(ngModel)]="selectedType" name="partType" required>
+          <mat-option *ngFor="let partType of partTypes" [value]="partType">
+            {{ partType }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-      <!-- Submit -->
+     
+      <mat-form-field *ngIf="shouldShowMomentWeight()" appearance="outline" class="form-field">
+        <mat-label>Moment weight</mat-label>
+        <input matInput name="momentWeight" ngModel required />
+      </mat-form-field>
+
       <button class="save-button" mat-raised-button color="primary" type="submit">
         Save
       </button>

@@ -32,28 +32,31 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class AddPartFormComponent {
   partTypes = Object.values(partTypeEnum);        
+  selectedType = partTypeEnum.Basic;
 
-  constructor(private http: HttpClient, private partService: PartService, private dialog: MatDialog, private dialogRef: MatDialogRef<AddPartFormComponent>) {}
+  constructor(private partService: PartService, private dialog: MatDialog, private dialogRef: MatDialogRef<AddPartFormComponent>) {}
 
+  
   onSave(form: NgForm) {
     if (form.valid) {
-
       const partData: partDto = {
-        
-        name : form.value.name,
+        name: form.value.name,
         partNumber: form.value.partNumber,
         description: form.value.description,
         serialNumber: form.value.serialNumber,
-        type:form.value.partType
+        type: form.value.partType,
+        momentWeight: form.value.momentWeight
       };
 
-      this.partService.save(partData); // samo poziva funkciju, bez subscribe
+      this.partService.save(partData);
       this.dialogRef.close();
       this.dialog.open(SuccessDialogComponent, {
         data: { message: 'Part saved successfully!' }
       });
-
-
     }
+  }
+
+  shouldShowMomentWeight(): boolean {
+    return this.selectedType === partTypeEnum.FanBlade;
   }
 }

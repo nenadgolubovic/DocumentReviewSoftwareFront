@@ -44,7 +44,6 @@ export class DocumentListComponent {
   loadDocuments(): void {
     this.documentService.getById(this.partService.currentPartId).subscribe({
       next: (docs) => {
-        console.log(docs);
         this.dataSource.data = docs.map(doc => ({
           ...doc,
           date: new Date(doc.documentDate),

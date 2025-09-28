@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommentService } from '../../services/comment/comment.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -31,11 +32,12 @@ export class CommentListComponent implements OnInit, AfterViewInit {
 
   comments: any[] = [];
   currentIndex = 0;
+  
 
   readonly cardWidth = 300;
-  readonly gap = 20;
-
-  constructor(private commentService: CommentService) {}
+  readonly gap = 20;    
+  hoverRating  = 0; 
+  constructor(public commentService: CommentService,private authService:AuthService) {}
 
  ngOnInit() {
 
@@ -50,8 +52,17 @@ export class CommentListComponent implements OnInit, AfterViewInit {
   loadCommentsForDocument(documentId: number) {
     this.commentService.loadComments(documentId).subscribe({
       next: (comments) => {
-        this.comments = comments; 
+        this.comments = comments;
         console.log(comments);
+        comments.forEach(comment => {
+          const id = comment.userId;
+          if (id && !this.commentService.usernames[id]) {
+            this.authService.getUserById(id).subscribe({
+              next: user => this.commentService.usernames[id] = user.username,
+              error: err => console.error('Error fetching user:', err)
+            });
+        }
+    });
       },
       error: (err) => console.error(err)
     });
@@ -90,10 +101,9 @@ export class CommentListComponent implements OnInit, AfterViewInit {
   }
 
   setRating(comment: any, rating: number) {
-    comment.rating = rating;
+    comment.rate = rating;
     this.commentService.setRating(comment.commentId,rating).subscribe({
       next: () => {
-        comment.approved = true;
       },
       error: (err) => console.error(err)
     });

@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { CommentService } from '../../services/comment/comment.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-comment-section',
@@ -29,11 +30,16 @@ export class CommentSectionComponent implements OnInit {
   commentTitle: string = '';
   commentText: string = '';
   comments: any[] = [];
+  currentUser: any = null;
+
   @Input() selectedDocument: any;  
 
-  constructor( private commentService:CommentService) {}
+  constructor( private commentService:CommentService, private authService: AuthService) {}
 
   ngOnInit() {
+    this.authService.getCurrentUser().subscribe(user => {
+      this.currentUser = user;
+    });
   }
 
   submitComment() {
@@ -42,21 +48,28 @@ export class CommentSectionComponent implements OnInit {
       console.warn("Document is not selected");
       return;
     }
-    console.log(this.selectedDocument);
 
-   const newComment = {
-     commentTitle: this.commentTitle,
-     comment: this.commentText,
-     commentDate: new Date(),
-     userId: 1,
-     approved: false,
-     rate: null,
-     documentId : this.selectedDocument.documentId
-   };
-     this.commentService.postComment(newComment).subscribe(() => {
-     this.commentTitle = '';
-     this.commentText = '';
-   });
+      const newComment = {
+        commentTitle: this.commentTitle,
+        comment: this.commentText,
+        commentDate: new Date(),
+        userId: this.currentUser.userId,
+        approved: false,
+        rate: null,
+        documentId : this.selectedDocument.documentId
+      };
+      
+       this.commentService.postComment(newComment).subscribe({
+          next: (createdComment) => {
+            this.commentTitle = '';
+            this.commentText = '';
+
+            if (this.currentUser) {
+              this.commentService.usernames[createdComment.userId] = this.currentUser.username;
+            }
+          },
+          error: (err) => console.error(err)
+        });
   
   }
 }
