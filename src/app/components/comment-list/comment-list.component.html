@@ -30,8 +30,8 @@
             class="star" 
             [class.filled]="star <= (hoverRating || comment.rate)"
             (click)="setRating(comment, star)"
-            (mouseenter)="hoverRating = star"
-            (mouseleave)="hoverRating = 0">
+            (mouseenter)="comment.hoverRating = star"
+            (mouseleave)="comment.hoverRating = 0">
             &#9733;
           </span>
         </div>

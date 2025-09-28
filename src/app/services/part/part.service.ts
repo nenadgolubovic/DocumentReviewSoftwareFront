@@ -25,9 +25,9 @@ export class PartService {
     let saveObs: Observable<void>;
 
     if (partData.type === partTypeEnum.Basic) {
-      saveObs = this.http.post<void>(this.apiUrlBasic, partData);
+      saveObs = this.http.post<void>(this.apiUrlBasic, partData,{ withCredentials: true });
     } else if (partData.type === partTypeEnum.FanBlade) {
-      saveObs = this.http.post<void>(this.apiUrlFanBlades, partData);
+      saveObs = this.http.post<void>(this.apiUrlFanBlades, partData,{ withCredentials: true });
     } else {
       throw new Error('Unknown part type');
     }
@@ -40,7 +40,7 @@ export class PartService {
     });
   }
   getAll(): void {
-    this.http.get<partDto[]>(this.getRoutes).subscribe({
+    this.http.get<partDto[]>(this.getRoutes,{ withCredentials: true }).subscribe({
       next: (data) => {
       this.partsSubject.next(data);
       },
@@ -54,7 +54,7 @@ export class PartService {
   }
 
     delete(id: number): void {
-     this.http.delete<string>(`${this.deleteRoute}${id}`, { responseType: 'text' as 'json' })
+     this.http.delete<string>(`${this.deleteRoute}${id}`, { responseType: 'text' as 'json' , withCredentials: true })
        .subscribe({
          next: (res) => {
            this.getAll();

@@ -22,7 +22,7 @@ export class CommentService {
 
   
   postComment(comment: any): Observable<any> {
-  return this.http.post<any>(this.saveApi, comment)
+  return this.http.post<any>(this.saveApi, comment,{ withCredentials: true })
     .pipe(
       tap(() => {
         console.log(this.commentsSubject.value);
@@ -34,17 +34,17 @@ export class CommentService {
   }
 
   loadComments(documentId:number): Observable<any[]> {
-   return this.http.get<any[]>(`${this.loadApi}/${documentId}`)
+   return this.http.get<any[]>(`${this.loadApi}/${documentId}`,{ withCredentials: true })
      .pipe(
        tap(data => this.commentsSubject.next(data)) 
      );
   }
 
   approve(commentId:number) : Observable<any> {
-      return this.http.put(`${this.putCommentApproveApi}/${commentId}`, null, { responseType: 'text' });
+      return this.http.put(`${this.putCommentApproveApi}/${commentId}`, null, { responseType: 'text',withCredentials: true });
   }
   setRating(commentId:number,rate:number): Observable<any> {
-      return this.http.put(`${this.putCommentRatingApi}/${commentId}/${rate}`, null, { responseType: 'text' });
+      return this.http.put(`${this.putCommentRatingApi}/${commentId}/${rate}`, null, { responseType: 'text', withCredentials: true  });
   }
 
   

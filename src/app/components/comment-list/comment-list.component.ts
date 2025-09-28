@@ -51,7 +51,8 @@ export class CommentListComponent implements OnInit, AfterViewInit {
 
   loadCommentsForDocument(documentId: number) {
     this.commentService.loadComments(documentId).subscribe({
-      next: (comments) => {
+      next: (comments) => {    
+        this.comments = comments.map(comment => ({ ...comment, hoverRating: 0 }));
         this.comments = comments;
         console.log(comments);
         comments.forEach(comment => {

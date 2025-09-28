@@ -77,13 +77,13 @@ export class AuthService {
   }
 
    registerUser(userData: any): Observable<string> {
-    return this.http.post(this.apiRegisterUrl, userData, { responseType: 'text' });
+    return this.http.post(this.apiRegisterUrl, userData, { responseType: 'text' ,withCredentials: true });
   }
   getCurrentUser(): Observable<any> {
     return this.currentUser.asObservable();
   }
   getUserById(userId: number): Observable<any> {
-    return this.http.get(`${this.getById}/${userId}`);
+    return this.http.get(`${this.getById}/${userId}`,{ withCredentials: true });
   }
   
 }

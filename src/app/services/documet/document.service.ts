@@ -19,18 +19,18 @@ export class DocumentService {
       formData.append('partId', data.id.toString()); 
       formData.append('document', selectedFile); 
     
-      this.http.post(this.postApi, formData).subscribe();
+      this.http.post(this.postApi, formData,{ withCredentials: true }).subscribe();
 
      
     }
     
     getDocument(filename: string): Observable<Blob> {
       return this.http.get(`http://localhost:8080/document/${filename}`, {
-        responseType: 'blob'
+        responseType: 'blob', withCredentials: true 
       });
     }
 
     getById(id:number): Observable<documentDto[]> {
-        return this.http.get<documentDto[]>(`${this.getAllApi}/${id}`);
+        return this.http.get<documentDto[]>(`${this.getAllApi}/${id}`,{ withCredentials: true });
   }
 }
